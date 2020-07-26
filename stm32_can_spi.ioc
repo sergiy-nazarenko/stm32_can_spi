@@ -1,8 +1,10 @@
 #MicroXplorer Configuration settings - do not modify
+CAN.BS1=CAN_BS1_3TQ
+CAN.BS2=CAN_BS2_5TQ
 CAN.CalculateTimeBit=1000
-CAN.CalculateTimeQuantum=333.33333333333337
-CAN.IPParameters=CalculateTimeQuantum,CalculateTimeBit,Prescaler
-CAN.Prescaler=12
+CAN.CalculateTimeQuantum=111.11111111111111
+CAN.IPParameters=CalculateTimeQuantum,CalculateTimeBit,Prescaler,BS2,BS1
+CAN.Prescaler=4
 File.Version=6
 GPIO.groupedBy=Group By Peripherals
 KeepUserPlacement=false
