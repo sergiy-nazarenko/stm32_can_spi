@@ -224,7 +224,14 @@ static void MX_CAN_Init(void)
   /* USER CODE END CAN_Init 0 */
 
   /* USER CODE BEGIN CAN_Init 1 */
-
+  //CAN_InitStructure.CAN_Mode = CAN_Mode_Silent_LoopBack;
+  // APB1 у нас работает на частоте 36МГц,
+  //Рекомендуется принимать следующие значения таймингов
+  //BaudRate= 1000  BRP=  4  SJW = 1  BS1= 4 BS2= 4
+  //BaudRate= 500   BRP=  9  SJW = 1  BS1= 3 BS2= 4
+  //BaudRate= 250   BRP= 16  SJW = 1  BS1= 4 BS2= 4
+  //BaudRate= 125   BRP= 32  SJW = 1  BS1= 4 BS2= 4
+//нам тут надо на 250
   /* USER CODE END CAN_Init 1 */
   hcan.Instance = CAN1;
   hcan.Init.Prescaler = 9;
