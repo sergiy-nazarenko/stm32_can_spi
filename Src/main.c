@@ -167,6 +167,8 @@ int main(void)
 
     HAL_Delay(1000);
 
+    HAL_GPIO_TogglePin(LED_TEST1_GPIO_Port,LED_TEST1_Pin);
+
   }
   /* USER CODE END 3 */
 }
@@ -242,7 +244,7 @@ static void MX_CAN_Init(void)
   hcan.Init.TimeTriggeredMode = DISABLE;
   hcan.Init.AutoBusOff = DISABLE;
   hcan.Init.AutoWakeUp = DISABLE;
-  hcan.Init.AutoRetransmission = DISABLE;
+  hcan.Init.AutoRetransmission = ENABLE;
   hcan.Init.ReceiveFifoLocked = DISABLE;
   hcan.Init.TransmitFifoPriority = DISABLE;
   if (HAL_CAN_Init(&hcan) != HAL_OK)
@@ -309,10 +311,20 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LED_CAN1_Pin|LED_MCP2515_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(CAN_CS_GPIO_Port, CAN_CS_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : LED_CAN1_Pin LED_MCP2515_Pin */
-  GPIO_InitStruct.Pin = LED_CAN1_Pin|LED_MCP2515_Pin;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, LED_CAN1_Pin|LED_MCP2515_Pin|LED_TEST1_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : CAN_CS_Pin */
+  GPIO_InitStruct.Pin = CAN_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(CAN_CS_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LED_CAN1_Pin LED_MCP2515_Pin LED_TEST1_Pin */
+  GPIO_InitStruct.Pin = LED_CAN1_Pin|LED_MCP2515_Pin|LED_TEST1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

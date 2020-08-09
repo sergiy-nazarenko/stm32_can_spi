@@ -61,10 +61,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define CAN_CS_Pin GPIO_PIN_1
+#define CAN_CS_GPIO_Port GPIOB
 #define LED_CAN1_Pin GPIO_PIN_14
 #define LED_CAN1_GPIO_Port GPIOB
 #define LED_MCP2515_Pin GPIO_PIN_15
 #define LED_MCP2515_GPIO_Port GPIOB
+#define LED_TEST1_Pin GPIO_PIN_5
+#define LED_TEST1_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
