@@ -11,7 +11,7 @@ prescaler = 60
 sjw = 1
 bs1 = 10
 bs2 = 7
-
+# https://gist.github.com/Arman92/154e2540847b32c44c29
 for i in xrange(1025):
 	for j in xrange(16+8+4):
 		try:
